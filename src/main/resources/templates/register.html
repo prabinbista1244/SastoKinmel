@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang = "en" xmlns:th = "http://www.thymeleaf.org" 
+th:replace = "~{base::layout(~{::section})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<section>
+	
+	<div class = "container-mt-5 p-5">
+		<div class = "row">
+			<div class = "col-md-5 p-5">
+				<img alt="" src="img/Profile_img/profile.png" width = "100%" height = "400px">
+				<p class = "text-center mt-5 fs-4">Your eCommerce site’s blog is one of your best outlets for communicating with your customers and potential buyers. 
+				It’s an ideal way to reach them with content entirely in your control.</p>
+			</div>
+			<div class = "col-md-7 p-5">
+				<div class = "card shadow p-3 mb-5 bg-body-tertiary rounded">
+					<div class = "card-header">
+						<p class = "text-center fs-4">Register</p>
+						
+						<th:block th:if="${session.errorMessage}">
+							<p class="text-danger fw-bold text-center">[[${session.errorMessage}]]</p>
+							<th:block th:text = "${@commonServiceImpl.removeSessionMessage()}"></th:block>
+						</th:block>
+						
+						<th:block th:if="${session.successMessage}">
+							<p class="text-success fw-bold text-center">[[${session.successMessage}]]</p>
+							<th:block th:text = "${@commonServiceImpl.removeSessionMessage()}"></th:block>
+						</th:block>	
+						
+					</div>
+					
+					
+					<div class = "card-body">
+						<form action = "/saveUser" enctype="multipart/form-data" method = "POST">
+							<div class = "row">
+								<div class = "col">
+								<label class = "form-label">Full Name</label><input class = "form-control" name = "name" type = "text" required>
+								</div>
+								<div class = "col">
+								<label class = "form-label">PhoneNumber</label><input class = "form-control" name = "mobileNumber" type = "number" required>
+								</div>
+							</div>
+							
+							<div class = "mb-3">
+								<label class = "form-label">Email</label><input class = "form-control" name = "email" type = "email" required>
+							</div>
+							
+							<div class = "row">
+								<div class = "col">
+								<label class = "form-label">Address</label><input class = "form-control" name = "address" type = "text" required>
+								</div>
+								<div class = "col">
+								<label class = "form-label">City</label><input class = "form-control" name = "city" type = "text" required>
+								</div>
+							</div>
+							
+							<div class = "row">
+								<div class = "col">
+								<label class = "form-label">State</label><input class = "form-control" name = "state" type = "text" required>
+								</div>
+								<div class = "col">
+								<label class = "form-label">Pin Code</label><input class = "form-control" name = "pincode" type = "number" required>
+								</div>
+							</div>
+							
+							<div class = "row">
+								<div class = "col">
+								<label class = "form-label">Password</label><input class = "form-control" name = "password" type = "password" required>
+								</div>
+								<div class = "col">
+								<label class = "form-label">Confirm Password</label><input class = "form-control" name = "conformPassword" type = "password" required>
+								</div>
+							</div>
+							
+							<div class = "mb-3">
+								<label class = "form-label">Profile Image</label><input class = "form-control" name = "img" type = "file" required>
+							</div>
+							
+							<button class = "btn bg-primary col-md-12 text-white">Register</button>
+						</form>
+					</div>
+					
+					<div class = "card-footer text-center">
+						Have an account?<a href = "/login" class = "text-decoration-none">Login</a>
+					</div>
+				</div>
+			</div>
+		
+		</div>
+	</div>
+	
+	</section>
+</body>
+</html>
