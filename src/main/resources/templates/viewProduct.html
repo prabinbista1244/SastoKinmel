@@ -71,8 +71,10 @@ th:replace = "~{base::layout(~{::section})}">
 							<a href = "/signin" class = "btn btn-danger col-md-12">Add To Cart</a>
 						</th:block>
 						
+						<!--  /signin,@{'/addCart?pid='+${product.id}+'&uid='+${user.id}}  -->
+						
 						<th:block th:unless = "${user == null}">
-							<a th:href = "@{'/addCart?pid='+${product.id}+'&uid='+${user.id}}" class = "btn btn-danger col-md-12">Add To Cart</a>
+							<a href = "" class = "btn btn-danger col-md-12">Add To Cart</a>
 						</th:block>
 						
 					</th:block>
